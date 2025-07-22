@@ -1,0 +1,285 @@
+const flights = [
+  
+  {
+    id: 'FL016',
+    airline: 'AirConnect',
+    from: 'Mumbai',
+    to: 'Delhi',
+    date: '2025-07-16',
+    departure: '09:00 AM',
+    arrival: '11:00 AM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 4800
+  },
+  {
+    id: 'FL017',
+    airline: 'Vistara',
+    from: 'Delhi',
+    to: 'Mumbai',
+    date: '2025-07-16',
+    departure: '03:00 PM',
+    arrival: '05:00 PM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 5100
+  },
+  {
+    id: 'FL018',
+    airline: 'IndiGo',
+    from: 'Bengaluru',
+    to: 'Chennai',
+    date: '2025-07-16',
+    departure: '10:00 AM',
+    arrival: '11:30 AM',
+    duration: '1h 30m',
+    stops: 0,
+    price: 3500
+  },
+
+  
+  {
+    id: 'FL019',
+    airline: 'SpiceJet',
+    from: 'Mumbai',
+    to: 'Delhi',
+    date: '2025-07-17',
+    departure: '07:00 AM',
+    arrival: '09:00 AM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 4600
+  },
+  {
+    id: 'FL020',
+    airline: 'Air India',
+    from: 'Delhi',
+    to: 'Bengaluru',
+    date: '2025-07-17',
+    departure: '12:00 PM',
+    arrival: '02:45 PM',
+    duration: '2h 45m',
+    stops: 0,
+    price: 7200
+  },
+  {
+    id: 'FL021',
+    airline: 'IndiGo',
+    from: 'Chandigarh',
+    to: 'Pune',
+    date: '2025-07-17',
+    departure: '11:00 AM',
+    arrival: '01:30 PM',
+    duration: '2h 30m',
+    stops: 0,
+    price: 6000
+  },
+
+  
+  {
+    id: 'FL022',
+    airline: 'Vistara',
+    from: 'Mumbai',
+    to: 'Bengaluru',
+    date: '2025-07-23',
+    departure: '08:30 AM',
+    arrival: '10:15 AM',
+    duration: '1h 45m',
+    stops: 0,
+    price: 5800
+  },
+  {
+    id: 'FL023',
+    airline: 'AirConnect',
+    from: 'Delhi',
+    to: 'Chennai',
+    date: '2025-07-23',
+    departure: '04:00 PM',
+    arrival: '06:30 PM',
+    duration: '2h 30m',
+    stops: 0,
+    price: 6500
+  },
+  {
+    id: 'FL001',
+    airline: 'IndiGo',
+    from: 'Mumbai',
+    to: 'Delhi',
+    date: '2025-07-20', 
+    departure: '10:00 AM',
+    arrival: '12:00 PM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 4500
+  },
+  {
+    id: 'FL002',
+    airline: 'Air India',
+    from: 'Mumbai',
+    to: 'Delhi',
+    date: '2025-07-20', 
+    departure: '02:00 PM',
+    arrival: '04:00 PM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 5200
+  },
+  {
+    id: 'FL003',
+    airline: 'SpiceJet',
+    from: 'Mumbai',
+    to: 'Delhi',
+    date: '2025-07-21', 
+    departure: '09:00 AM',
+    arrival: '11:00 AM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 4800
+  },
+  {
+    id: 'FL004',
+    airline: 'Vistara',
+    from: 'Delhi',
+    to: 'Mumbai',
+    date: '2025-07-20', 
+    departure: '06:00 PM',
+    arrival: '08:00 PM',
+    duration: '2h 0m',
+    stops: 0,
+    price: 5000
+  },
+  {
+    id: 'FL005',
+    airline: 'AirConnect',
+    from: 'Chandigarh',
+    to: 'Pune',
+    date: '2025-07-20', 
+    departure: '09:30 AM',
+    arrival: '12:00 PM',
+    duration: '2h 30m',
+    stops: 0,
+    price: 6500
+  },
+  {
+    id: 'FL006',
+    airline: 'Deccan Air',
+    from: 'Pune',
+    to: 'Chandigarh',
+    date: '2025-07-20', 
+    departure: '03:00 PM',
+    arrival: '05:30 PM',
+    duration: '2h 30m',
+    stops: 0,
+    price: 6000
+  },
+  {
+    id: 'FL007',
+    airline: 'SpiceJet',
+    from: 'Chandigarh',
+    to: 'Pune',
+    date: '2025-07-20', 
+    departure: '01:00 PM',
+    arrival: '04:30 PM',
+    duration: '3h 30m',
+    stops: 1,
+    price: 5800
+  },
+  {
+    id: 'FL008',
+    airline: 'IndiGo',
+    from: 'Chandigarh',
+    to: 'Pune',
+    date: '2025-07-21', 
+    departure: '07:00 AM',
+    arrival: '09:30 AM',
+    duration: '2h 30m',
+    stops: 0,
+    price: 6200
+  },
+  {
+    id: 'FL009',
+    airline: 'Vistara',
+    from: 'Delhi',
+    to: 'Bengaluru',
+    date: '2025-07-22', 
+    departure: '08:00 AM',
+    arrival: '10:45 AM',
+    duration: '2h 45m',
+    stops: 0,
+    price: 7000
+  },
+  {
+    id: 'FL010',
+    airline: 'Air India',
+    from: 'Delhi',
+    to: 'Bengaluru',
+    date: '2025-07-22', 
+    departure: '11:00 AM',
+    arrival: '02:00 PM',
+    duration: '3h 0m',
+    stops: 0,
+    price: 7500
+  },
+  {
+    id: 'FL011',
+    airline: 'SpiceJet',
+    from: 'Bengaluru',
+    to: 'Delhi',
+    date: '2025-07-22', 
+    departure: '05:00 PM',
+    arrival: '07:45 PM',
+    duration: '2h 45m',
+    stops: 0,
+    price: 6800
+  },
+  {
+    id: 'FL012',
+    airline: 'IndiGo',
+    from: 'Chennai',
+    to: 'Hyderabad',
+    date: '2025-07-23', 
+    departure: '06:00 AM',
+    arrival: '07:30 AM',
+    duration: '1h 30m',
+    stops: 0,
+    price: 3000
+  },
+  {
+    id: 'FL013',
+    airline: 'Vistara',
+    from: 'Hyderabad',
+    to: 'Chennai',
+    date: '2025-07-23', 
+    departure: '08:00 PM',
+    arrival: '09:30 PM',
+    duration: '1h 30m',
+    stops: 0,
+    price: 3200
+  },
+  {
+    id: 'FL014',
+    airline: 'Air India',
+    from: 'Mumbai',
+    to: 'Bengaluru',
+    date: '2025-07-25', 
+    departure: '07:00 AM',
+    arrival: '08:45 AM',
+    duration: '1h 45m',
+    stops: 0,
+    price: 5500
+  },
+  {
+    id: 'FL015',
+    airline: 'IndiGo',
+    from: 'Bengaluru',
+    to: 'Mumbai',
+    date: '2025-07-25', 
+    departure: '09:00 PM',
+    arrival: '10:45 PM',
+    duration: '1h 45m',
+    stops: 0,
+    price: 5300
+  }
+];
+
+module.exports = flights;

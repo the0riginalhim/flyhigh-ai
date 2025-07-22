@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLYHIGH.AI - Conversational Flight Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="">
+    <!-- Main Chat Container -->
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-title-container">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 50 L90 10 L70 50 L90 90 L10 50 Z" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+                </svg>
+                <h1 class="gradient-text">FLYHIGH.AI</h1>
+            </div>
+            
+            <div class="header-actions">
+                <button id="view-bookings-btn" class="header-action-btn" title="View My Bookings">
+                    <i class="fas fa-list-alt"></i>
+                </button>
+                <button id="logout-btn" class="header-action-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+                <button id="theme-toggle" class="header-action-btn" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+        </header>
+
+        
+        <div id="filter-bar" class="filter-bar hidden">
+            <select id="sort-flights">
+                <option value="default">Sort by...</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="duration_asc">Duration: Shortest</option>
+            </select>
+            <select id="filter-airline">
+                <option value="all">All Airlines</option>
+            </select>
+            <button id="reset-filters-btn">Reset</button>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="message-bubble bot-message">
+                Hello! I'm your intelligent Flight Booking Bot. Try one of these:
+            </div>
+            <div class="suggestions-container" id="suggestions-container">
+                <a href="#" class="prompt-link">Flights from Mumbai to Delhi tomorrow</a>
+                <a href="#" class="prompt-link">Find a flight to Bengaluru this weekend</a>
+                <a href="#" class="prompt-link">Show me flights on July 28th</a>
+            </div>
+        </div>
+
+        <div class="loading-indicator hidden" id="loading-indicator"></div>
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="Ask for a flight to start..." autofocus>
+            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div id="bookings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold">My Bookings</h2>
+                <button class="close-button" id="close-bookings-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="bookings-list"></div>
+        </div>
+    </div>
+
+    <div id="passenger-details-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold">Passenger & Contact Details</h2>
+                <button class="close-button" id="close-passenger-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="passenger-form" novalidate>
+                    <h3 class="form-section-title">Contact Information</h3>
+                    <div class="form-grid">
+                        <div>
+                            <input type="email" id="contact-email" placeholder="Contact Email" required class="form-input">
+                            <p class="validation-message" id="email-validation-message"></p>
+                        </div>
+                        <div>
+                            <input type="tel" id="contact-phone" placeholder="Contact Phone (Optional)" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <h3 class="form-section-title">Passengers</h3>
+                        <div class="passenger-count-wrapper">
+                            <label for="passenger-count">Number:</label>
+                            <input type="number" id="passenger-count" min="1" max="10" value="1" class="form-input passenger-count-input">
+                        </div>
+                    </div>
+                    <div id="passenger-names-container" class="passenger-names-wrapper"></div>
+                    <div class="form-actions">
+                        <button type="submit" id="go-to-payment-btn" class="submit-button">
+                            Proceed to Payment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold">Payment Details</h2>
+                <button class="close-button" id="close-payment-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="payment-form" novalidate>
+                    <div class="payment-form-grid">
+                        <div class="card-number-wrapper">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="4242 4242 4242 4242" required class="form-input">
+                        </div>
+                        <div class="card-name-wrapper">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" placeholder="John Doe" required class="form-input">
+                        </div>
+                        <div class="card-expiry-wrapper">
+                            <label for="card-expiry">Expiry</label>
+                            <input type="text" id="card-expiry" placeholder="MM/YY" required class="form-input">
+                        </div>
+                        <div class="card-cvv-wrapper">
+                            <label for="card-cvv">CVV</label>
+                            <input type="text" id="card-cvv" placeholder="123" required class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="pay-now-btn" class="submit-button">
+                            Pay Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold" id="confirmation-modal-title">Confirm Action</h2>
+                <button class="close-button" id="close-confirmation-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmation-modal-message" class="mb-6"></p>
+                <div class="form-actions">
+                    <button id="cancel-action-btn" class="cancel-btn" style="background-color: #9ca3af;">Cancel</button>
+                    <button id="confirm-action-btn" class="submit-button">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

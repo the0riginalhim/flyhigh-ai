@@ -1,0 +1,14 @@
+# Root-level dependencies
+/node_modules
+
+# Backend-specific files to ignore
+/flight-bot-backend/node_modules
+/flight-bot-backend/.env
+
+# macOS system files
+.DS_Store
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
