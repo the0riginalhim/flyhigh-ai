@@ -12,7 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+const corsOptions = {
+  origin: 'https://fly-high-ai.netlify.app'
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes

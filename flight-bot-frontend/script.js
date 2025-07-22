@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let bookingPayload = null;
 
     // --- API Base URL ---
-    const API_URL = 'http://localhost:5000';
+    const API_URL = 'https://flyhigh-ai.onrender.com';
     
     // --- Event Listeners ---
     sendButton.addEventListener('click', handleSendMessage);
