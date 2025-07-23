@@ -1,5 +1,17 @@
 # **FLYHIGH.AI: Intelligent Conversational Booking Agent**
 
+### 🔴 Live Demo
+
+You can access the live, deployed version of the application here:
+
+**[https://fly-high-ai.netlify.app/](https://fly-high-ai.netlify.app/)**
+
+> **Test Credentials:**
+> * **Email:** `test@example.com`
+> * **Password:** `123456`
+
+> *(You can create a test user with these credentials in your database, or mention any user they can create themselves).*
+
 FLYHIGH.AI is a full-stack, AI-powered web application that redefines the flight booking experience. It features a sophisticated conversational interface that allows users to search for and book flights using natural language in multiple languages. This project demonstrates a complete, secure, and modern SaaS-like application architecture, perfect for showcasing advanced web development and AI integration skills.
 
 ![FLYHIGH.AI Screenshot](./assets/flyhigh-login.png)
