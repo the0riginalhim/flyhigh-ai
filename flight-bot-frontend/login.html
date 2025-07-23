@@ -115,18 +115,24 @@
     </div>
 
     <script>
+        // --- Element References ---
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
         const switchToRegisterLink = document.getElementById('switch-to-register');
         const switchToLoginLink = document.getElementById('switch-to-login');
+        const authTitle = document.getElementById('auth-title');
         const errorMessage = document.getElementById('error-message');
-        const API_URL = 'http://localhost:5000';
+        
+        // This should be your live Render URL
+        const API_URL = 'https://flyhigh-ai.onrender.com';
 
+        // --- Form Toggle Logic ---
         switchToRegisterLink.addEventListener('click', () => {
             loginForm.style.display = 'none';
             registerForm.style.display = 'block';
             switchToRegisterLink.style.display = 'none';
             switchToLoginLink.style.display = 'block';
+            authTitle.textContent = 'Create Your Account';
             errorMessage.style.display = 'none';
         });
 
@@ -135,9 +141,11 @@
             loginForm.style.display = 'block';
             switchToLoginLink.style.display = 'none';
             switchToRegisterLink.style.display = 'block';
+            authTitle.textContent = 'Welcome to FLYHIGH.AI';
             errorMessage.style.display = 'none';
         });
 
+        // --- API Logic ---
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -155,6 +163,10 @@
         async function authenticate(endpoint, body) {
             errorMessage.style.display = 'none';
             try {
+                
+                console.log('DEBUG: API Request URL is:', API_URL + endpoint);
+              
+
                 const response = await fetch(API_URL + endpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
